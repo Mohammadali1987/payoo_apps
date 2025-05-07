@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+
+  <main class="flex justify-center">
+    <div class="mockup-phone border-primary">
+      <div class="mockup-phone-camera"></div>
+      <div class="mockup-phone-display">
+        <div class="pt-10 bg-base-200 min-h-screen">
+          <div class="stats shadow">
+            <div class="stat">
+              
+              <div id="balance" class="stat-value">89,400</div>
+              <div class="stat-desc font-bold text-3xl text-black">Balance</div>
+            </div>
+          </div>
+      
+      
+       <div class="divider"></div>
+
+       <div class="bg-white p-6">
+        <button id="" class="btn btn-neutral btn-outline">Add Money</button>
+        <button id="" class="btn btn-neutral btn-outline">Cash Out</button>
+      </div>
+          <!-- button added -->
+
+          <div class="card-body">
+            <fieldset class="fieldset">
+              <label class="label">Amount</label>
+              <input id="amount-input" type="email" class="input" placeholder="Your Amount" />
+              <label class="label">Pin</label>
+              <input id="pin-number-input" type="password" class="input" placeholder="Your Pin" />
+              
+              <button id="btn-add-money" class="btn btn-neutral mt-4">Add Money</button>
+            </fieldset>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  
+    
+
+    
+  <script src="js/payoo.js"></script>
+  <script>
+
+    document.getElementById('btn-add-money').addEventListener("click", function(event) {
+      event.preventDefault();
+      const currentBalance = document.getElementById('balance').innerText;
+
+      const amountInput = document.getElementById('amount-input').value;
+      const pinNumberInput = document.getElementById('pin-number-input').value;
+
+      if(pinNumberInput === 555) {
+        const totalAmount = parseFloat(amountInput) + parseFloat(currentBalance);
+        currentBalance.innerText = totalAmount;
+      }
+      else {
+        wrong pin. try again.
+      }
+    })
+    
+    
+  </script>
+
+</body>
+</html>
