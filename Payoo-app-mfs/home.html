@@ -21,7 +21,7 @@
           <div class="stats shadow">
             <div class="stat">
               
-              <div id="balance" class="stat-value">89,400</div>
+              <div id="balance" class="stat-value">400</div>
               <div class="stat-desc font-bold text-3xl text-black">Balance</div>
             </div>
           </div>
@@ -30,50 +30,103 @@
        <div class="divider"></div>
 
        <div class="bg-white p-6">
-        <button id="" class="btn btn-neutral btn-outline">Add Money</button>
-        <button id="" class="btn btn-neutral btn-outline">Cash Out</button>
+        <button id="add" class="btn btn-neutral btn-outline">Add Money</button>
+        <button id="cash" class="btn btn-neutral btn-outline">Cash Out</button>
       </div>
           <!-- button added -->
 
-          <div class="card-body">
+          <div id="add-money" class="card-body">
             <fieldset class="fieldset">
               <label class="label">Amount</label>
               <input id="amount-input" type="email" class="input" placeholder="Your Amount" />
               <label class="label">Pin</label>
-              <input id="pin-number-input" type="password" class="input" placeholder="Your Pin" />
+              <input id="pin-input" type="password" class="input" placeholder="Your Pin" />
               
               <button id="btn-add-money" class="btn btn-neutral mt-4">Add Money</button>
+            </fieldset>
+          </div>
+
+          <div id="cash-out" class="card-body hidden">
+            <fieldset class="fieldset">
+              <label class="label">Amount</label>
+              <input id="cash-out-amount-input" type="email" class="input" placeholder="Your Cash Out Amount" />
+              <label class="label">Pin</label>
+              <input id="cash-out-pin-input" type="password" class="input" placeholder="Your Pin" />
+              
+              <button id="btn-cash-out" class="btn btn-neutral mt-4">Cash Out</button>
             </fieldset>
           </div>
           
         </div>
       </div>
     </div>
+
   </main>
   
     
 
     
-  <script src="js/payoo.js"></script>
+  
   <script>
 
-    document.getElementById('btn-add-money').addEventListener("click", function(event) {
-      event.preventDefault();
-      const currentBalance = document.getElementById('balance').innerText;
-
+    document.getElementById('btn-add-money').addEventListener('click', function(event) {
+      
+      
       const amountInput = document.getElementById('amount-input').value;
-      const pinNumberInput = document.getElementById('pin-number-input').value;
+      
+      const pinInput = document.getElementById('pin-input').value;
+      
 
-      if(pinNumberInput === 555) {
-        const totalAmount = parseFloat(amountInput) + parseFloat(currentBalance);
-        currentBalance.innerText = totalAmount;
+      if( pinInput === '555') {
+        
       }
       else {
-        wrong pin. try again.
+       alert('wrong entry') ;
       }
+
+      const currentBalance = document.getElementById('balance').innerText;
+      
+      const currentBalanceNumber = parseFloat(currentBalance);
+      const amountInputNumber = parseFloat(amountInput);
+
+      const newBalance = currentBalanceNumber + amountInputNumber;
+      
+
+      document.getElementById('balance').innerText = newBalance;
+
+      
     })
     
-    
+    document.getElementById('btn-cash-out').addEventListener('click', function() {
+      const cashOutAmount = document.getElementById('cash-out-amount-input').value;
+      const cashOutAmountNumber = parseFloat(cashOutAmount);
+      const currentBalance = document.getElementById('balance').innerText;
+      
+      const currentBalanceNumber = parseFloat(currentBalance);
+      const cashOutPinNumberInput = document.getElementById('cash-out-pin-input').value;
+
+      if(cashOutPinNumberInput === '444') {
+        const newCashBalance = currentBalanceNumber - cashOutAmountNumber;
+        console.log(newCashBalance);
+        document.getElementById('balance').innerText = newCashBalance;
+      }
+      else {
+        alert("error in input");
+      }
+
+    })
+   
+    document.getElementById('add').addEventListener('click', function() {
+      document.getElementById('add-money').classList.remove('hidden');
+      document.getElementById('cash-out').classList.add('hidden');
+      
+    })
+
+    document.getElementById('cash').addEventListener('click', function() {
+      document.getElementById('cash-out').classList.remove('hidden');
+      document.getElementById('add-money').classList.add('hidden');
+
+    })
   </script>
 
 </body>
